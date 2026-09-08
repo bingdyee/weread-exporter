@@ -18,6 +18,8 @@ uv run weread-exporter login
 # 全书同时导出四种格式，每种格式一个文件
 uv run weread-exporter download fa3322105ca0ecfa382cac6 --all \
   -f epub -f pdf -f markdown -f txt --cache
+
+weread-exporter download 394326d0813abb693g011371 --all -f pdf --cache
 ```
 
 如果已经安装 Chrome，可省略 Chromium 安装，给 `login` 和 `download` 添加 `--channel chrome`。
