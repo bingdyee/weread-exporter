@@ -1,0 +1,60 @@
+[project]
+name = "weread-exporter"
+version = "0.2.0"
+description = "Download WeRead chapters with Click and Playwright; export EPUB, PDF, Markdown and TXT."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "click>=8.5.0",
+    "ebooklib>=0.20",
+    "lxml>=6.1.3",
+    "markdownify>=1.2.3",
+    "pillow>=12.3.0",
+    "playwright>=1.62.0",
+    "pydantic>=2.13.5",
+    "reportlab>=5.0.1",
+    "tree-sitter>=0.26.0",
+    "tree-sitter-javascript>=0.25.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.32.0"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+weread-exporter = "weread_exporter.cli:cli"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1", 
+    "pytest-asyncio>=1.4.0", 
+    "pypdf>=6.18.0", 
+    "pypdfium2>=5.13.0", 
+    "ruff>=0.16.6"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["weread_exporter"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = ["browser: local Chromium integration tests (requires playwright install chromium)"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "weread_exporter/", 
+    "tests/", 
+    "config/config.example.json", 
+    "README.md", 
+    "pyproject.toml", 
+    "uv.lock"
+]

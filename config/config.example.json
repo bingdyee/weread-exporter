@@ -1,0 +1,21 @@
+{
+  "browser": {
+    "channel": "chrome",
+    "userDataDir": "data/user-data",
+    "headless": false,
+    "timeout": 30
+  },
+  "weread": {
+    "enableCache": true,
+    "formats": ["epub", "pdf", "markdown", "txt"],
+    "output": "output",
+    "delay": 1,
+    "retries": 2,
+    "books": [
+      {
+        "id": "394326d0813abb693g011371",
+        "chapters": ["...", "文化偏至论"]
+      }
+    ]
+  }
+}
